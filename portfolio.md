@@ -61,6 +61,14 @@
   - 受け取り方法:**朝刊風ページ(Artifact)**として毎朝更新
   - 現在の情報源:Spotify「ながら日経」。日経新聞の購読は検討中
 
+### 自動化の設定状況(2026-09-25時点、稼働中)
+- 投資フォルダ専用のGitHubプライベートリポジトリ作成・push済み(`https://github.com/a4967c6fd7swy-dot/-a4967`、`.gitignore`でスプレッドシートは除外、`portfolio.md`と`CLAUDE.md`のみ)。claude.aiとGitHub連携済み
+- **週次日本株銘柄推奨**(毎週月曜7:00頃JST):`trig_01TpRcSsV3hnaKxmja61dVRf` (https://claude.ai/code/routines/trig_01TpRcSsV3hnaKxmja61dVRf)。市場全体から新規候補を探索し、実行結果(チャット)として提示
+- **毎日ニュースブリーフ(平日軽量版)**(月〜金 7:00頃JST):`trig_01R7DmmQTsYUdAJL3535im87` (https://claude.ai/code/routines/trig_01R7DmmQTsYUdAJL3535im87)
+- **毎日ニュースブリーフ(週末深掘り版)**(土・日 7:00頃JST):`trig_01CLJ4e1rJRDg5saNBLEmzoT` (https://claude.ai/code/routines/trig_01CLJ4e1rJRDg5saNBLEmzoT)
+- 上記2つのニュースルーチンは同一のArtifact(タイトル「静岡発マーケット朝刊」)を毎朝更新する形式。直近5日分の履歴を保持し古い分は自動整理
+- 方針を大きく変更した場合は、`portfolio.md`を更新後、上記ルーチンのプロンプトも合わせて更新が必要(portfolio.mdはリポジトリ経由で毎回読み込まれるが、ルーチン自体の指示文は別途更新が必要な場合がある)
+
 ## 更新履歴
 - 2026-09-25: 初版作成
 - 2026-09-25: 日本株保有銘柄・投資信託を記録
@@ -69,3 +77,4 @@
 - 2026-09-25: エフコード・S&Jを含み損解消後の売却検討銘柄としてメモ
 - 2026-09-25: 投資予算方針、銘柄推奨・ニュース収集の継続タスク依頼内容を追記
 - 2026-09-25: 銘柄推奨(週次)・ニュース収集(平日軽量+週末深掘り、朝刊風Artifact)の運用方針を確定。エフコード・S&Jの売却判断はご本人が行うため推奨対象外と明記
+- 2026-09-25: 投資フォルダ専用GitHubリポジトリを作成・push。GitHub連携完了後、週次銘柄推奨・毎日ニュースブリーフ(平日/週末)の3ルーチンを作成し稼働開始
